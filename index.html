@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <title>Document</title>
+    <style>
+        .nav{
+            height: 70px;
+            background-color: blueviolet;
+        }
+        .container-fluid{
+            padding: 0;
+            margin: 0;
+        }
+        #app{
+            display: flex !important;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        .card{
+            padding: 20px;
+            margin: 35px;
+        }
+        .img-container{
+            height: 200px;
+            width: 200px;
+        }
+        img{
+            height: 100%;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div class="container-fluid d-flex justify-content-center flex-column">
+        <div class="nav">logo</div>
+
+        <div id="app">
+            <div class="card d-flex align-items-center" v-for="(card , i) in arrayMusic" :key="i">
+                <div class="img-container"><img :src="card.photo" data-bs-toggle="modal" :data-bs-target="'#exampleModal' + i"></div>
+                <div>{{card.name}}</div>
+                <div>{{card.artist}}</div>
+                <div>{{card.date}}</div>
+
+
+                <div class="modal fade" :id="'exampleModal' + i" tabindex="-1" :aria-labelledby="'exampleModalLabel' + i" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-body d-flex flex-column align-items-center">
+                                <img :src="card.photo">
+                                <div>{{card.name}}</div>
+                                <div>{{card.artist}}</div>
+                                <div>{{card.date}}</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
